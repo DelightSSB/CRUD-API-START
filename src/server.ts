@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import app from './app.js';
-import post from './routes/posts.js';
+import post from './routes/taskRoutes.js';
 import errorHandler from './middleware/error.js';
 
 const port = process.env.PORT || 8080

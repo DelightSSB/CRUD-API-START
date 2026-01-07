@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import { HttpError } from "./HttpError.js";
+import { HttpError } from "./httperror.js";
 
 const errorHandler = (err:Error , req:Request, res:Response, next:NextFunction) => {
     //Note: use if/else to detect err type rather than nested terneries

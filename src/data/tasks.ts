@@ -1,4 +1,6 @@
-let tasks = [
+import type { Task } from "../types/tasks.js";
+
+let tasks: Task[] = [
     {id: 1, name: 'Run Program', completed: true},
     {id: 2, name: 'Run Network', completed: false},
     {id: 3, name: 'Check Authorization', completed: false},

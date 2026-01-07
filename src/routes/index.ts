@@ -1,5 +1,5 @@
 import { Router } from "express";
-import post from "./posts.js";
+import post from "./taskRoutes.js";
 
 export {
     post
