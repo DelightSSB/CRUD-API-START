@@ -5,7 +5,7 @@ import { HttpError } from "./httperror.js";
 const isValid = (req:Request, res:Response, next:NextFunction) =>{
     const{name , completed} = req.body;
     
-      if(name === "" || completed === ""){ //check if user entered both field
+      if((name === "" || name ===undefined) || (completed === "" || completed === undefined)){ //check if user entered both field
         const error = new HttpError(`Enter a valid tasks with name and completion status`, 400)
         return next(error)
       }else   if ( //check that completed field is in fact true or false
@@ -20,8 +20,6 @@ const isValid = (req:Request, res:Response, next:NextFunction) =>{
         req.body.completed = typeof completed === "string"
         ? completed.toLowerCase() === "true"
         : completed;}
-
-        console.log('Completed conversion of completed property')
         next();
 };
 

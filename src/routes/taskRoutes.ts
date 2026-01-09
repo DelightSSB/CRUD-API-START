@@ -20,7 +20,7 @@ router.post("/", isValid, (req, res, next) => {
 
 });
 
-//GET: Read all posts with optional limit query parameter
+//GET: Read all posts with optional completed query parameter
 router.get("/", (req, res, next) => {
 
   const completedQuery = req.query.completed;
@@ -55,12 +55,46 @@ router.get('/:id', selectedTask, (req, res, next) => {
     res.status(200).json(req.task);
 });
 
-//PUT: Change all properties of a task, exluding the id property
+//PUT: Change all properties of a task, excluding the id property
 router.put('/:id',selectedTask, isValid, (req, res, next,) => {
   req.task.name = req.body.name
   req.task.completed = req.body.completed
   res.json(tasks)
-})
+});
+
+//Change only one property of a given task, excluding the id property
+router.patch('/:id', selectedTask, ( req, res, next) => {
+  const { name, completed } = req.body ?? {};
+
+  const hasName = req.body.name !== undefined;
+  const hasCompleted = req.body.completed !== undefined;
+
+  if (hasName === hasCompleted) {
+    const error = new HttpError("Enter exclusively either 'name' or 'completed'. Not both.", 400);
+    return next(error)
+  }
+
+  if (hasName && typeof name === "string" && name.trim() === "") {
+    const error = new HttpError("Task name cannot be set to blank", 400);
+    return next(error)
+  }
+
+  if(hasName){
+    req.task.name = req.body.name
+  }else if (
+      typeof completed === "string" &&
+      completed.toLowerCase() !== "true" &&
+      completed.toLowerCase() !== "false"
+    ){
+        const error = new HttpError(`Completion property must be true or false`, 400);
+        return next(error)
+    }else{
+    req.task.completed = typeof completed === "string"
+    ? completed.toLowerCase() === "true"
+    : completed;
+  }
+  res.json(tasks)
+});
 
 
 
