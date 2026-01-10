@@ -20,12 +20,19 @@ This project intentionally uses an in-memory data store instead of a database to
 src/
 
 /app.ts            // Express app setup (middleware + routes)
+
 -/server.ts         // Server entry point
+
 -/routes/           // Route definitions
+
 -/middleware/       // Validation, error handling, resource loaders
+
 -/data/             // In-memory task data (fake DB)
+
 -/types/            // Shared TypeScript types and extensions
+
 -/errors/           // Custom error classes
+
 
 ## Tasks Structure
 The stucture of each task in the in-mememory database is:
@@ -72,5 +79,6 @@ The server will start on the port defined in .env or run on port 8080 by default
 - Designed for proof of learning and application of concepts. This is a foundational project into backend. Future projects will have extensive features and concepts applied to them as necessary. (controllers, limits, validation API, data persistence, etc.)
 - Project is litered with comments providing tidbits of context and my thoughtprocess. They do not explain my entire logic on each of my routes
 - Structure mirrors productio-grade Express applications
+
 
 
