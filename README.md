@@ -37,9 +37,9 @@ src/
 ## Tasks Structure
 The stucture of each task in the in-mememory database is:
 {
-  id: number;
-  name: string;
-  completed: boolean;
+id: number;
+name: string;
+completed: boolean;
 }
 
 ## Routes Criteria
@@ -79,6 +79,7 @@ The server will start on the port defined in .env or run on port 8080 by default
 - Designed for proof of learning and application of concepts. This is a foundational project into backend. Future projects will have extensive features and concepts applied to them as necessary. (controllers, limits, validation API, data persistence, etc.)
 - Project is litered with comments providing tidbits of context and my thoughtprocess. They do not explain my entire logic on each of my routes
 - Structure mirrors productio-grade Express applications
+
 
 
 
