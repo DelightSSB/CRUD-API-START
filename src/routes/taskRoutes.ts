@@ -1,6 +1,6 @@
 import express from "express";
 import { HttpError } from "../middleware/httperror.js";
-import isValid from "../middleware/validateInput.js";
+import isValid from "../middleware/isValid.js";
 import selectedTask from "../middleware/selectedTask.js";
 import tasks from "../data/tasks.js";
 const router = express.Router();
@@ -55,14 +55,14 @@ router.get('/:id', selectedTask, (req, res, next) => {
     res.status(200).json(req.task);
 });
 
-//PUT: Change all properties of a task, excluding the id property
+//PUT: Update all properties of a task, excluding the id property
 router.put('/:id',selectedTask, isValid, (req, res, next,) => {
   req.task.name = req.body.name
   req.task.completed = req.body.completed
   res.json(tasks)
 });
 
-//Change only one property of a given task, excluding the id property
+//PATCH: Update only one property of a given task, excluding the id property
 router.patch('/:id', selectedTask, ( req, res, next) => {
   const { name, completed } = req.body ?? {};
 
@@ -96,6 +96,12 @@ router.patch('/:id', selectedTask, ( req, res, next) => {
   res.json(tasks)
 });
 
+//DELETE: Delete the task whos id matches with the one given. Then send the updated tasks.
+router.delete('/:id', selectedTask, ( req, res, next) => {
+  const index = tasks.findIndex(task => task.id === req.task.id);
+  tasks.splice(index, 1);
+  res.json(tasks)
+});
 
 
 export default router;
