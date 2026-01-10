@@ -44,7 +44,7 @@ completed: boolean;
 
 ## Routes Criteria
 The POST, GET, PUT, and PATCH, routes all take in url encoded json data to complete the task. I recommend using POSTMAN to be able to change the body of 
-your request to match the data that is necessary. You cannot change the id of a task but can change the name or string property of a task.  
+your request to match the data that is necessary. You cannot change the id of a task but can change the name or completed property of a task.  
 
 ## Routes:
 - POST /api/posts
@@ -79,6 +79,7 @@ The server will start on the port defined in .env or run on port 8080 by default
 - Designed for proof of learning and application of concepts. This is a foundational project into backend. Future projects will have extensive features and concepts applied to them as necessary. (controllers, limits, validation API, data persistence, etc.)
 - Project is litered with comments providing tidbits of context and my thoughtprocess. They do not explain my entire logic on each of my routes
 - Structure mirrors productio-grade Express applications
+
 
 
 
